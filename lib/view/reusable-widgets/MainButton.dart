@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 class MainButton extends StatelessWidget {
-  const MainButton({Key? key ,required this.FontSize}) : super(key: key);
+  const MainButton({Key? key ,required this.FontSize ,required this.text}) : super(key: key);
   final double FontSize;
+  final String text;
   @override
   Widget build(BuildContext context) {
     return  MaterialButton(
@@ -9,10 +10,10 @@ class MainButton extends StatelessWidget {
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20)
       ),
-      color: Colors.deepPurple,
+      color: Colors.indigo,
       textColor: Colors.white,
       onPressed: (){},
-      child: Text("Log-in",style: TextStyle(fontSize: FontSize),),
+      child: Text(text,style: TextStyle(fontSize: FontSize),),
     );
   }
 }

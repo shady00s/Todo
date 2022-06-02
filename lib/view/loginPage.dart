@@ -52,7 +52,7 @@ class LogInScreen extends StatelessWidget {
               ),
             ),
 
-            Expanded(child: MainButton(FontSize: 24,))
+            Expanded(child: MainButton(FontSize: 24,text: "Log-in",))
             
 
           ],
