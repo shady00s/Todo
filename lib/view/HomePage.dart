@@ -14,9 +14,12 @@ class _HomePageScreenState extends State<HomePageScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation:0 ,
         leading: Padding(
           padding: const EdgeInsets.only(left: 32.0),
           child: IconButton(
+            color: Colors.black,
             icon: Icon(Icons.menu),
             onPressed:(){}
           ),
@@ -25,6 +28,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
           Padding(
             padding: const EdgeInsets.only(right: 32.0),
             child: IconButton(
+                color: Colors.black,
                 icon: Icon(Icons.menu),
                 onPressed:(){}
             ),
