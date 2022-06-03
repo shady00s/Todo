@@ -160,6 +160,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
+
                               Align(
                                   alignment: Alignment.topRight,
                                   child: Row(
