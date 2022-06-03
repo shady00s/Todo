@@ -205,6 +205,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                       ),
                                     ),
                                     Text("Done",
+
                                         style: TextStyle(
                                             fontSize: 12,
                                             fontFamily: "Nunito",
