@@ -10,6 +10,7 @@ class HomePageScreen extends StatefulWidget {
   @override
   State<HomePageScreen> createState() => _HomePageScreenState();
 }
+
 // text controllers
 TextEditingController noteTitle = TextEditingController();
 TextEditingController noteBody = TextEditingController();
@@ -20,26 +21,69 @@ class _HomePageScreenState extends State<HomePageScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leadingWidth: 180,
+        toolbarHeight: 80,
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: Padding(
-          padding: const EdgeInsets.only(left: 32.0),
-          child: Row(
-            children: [
-
-            ],
-          )
-        ),
+            padding: const EdgeInsets.only(left: 22.0),
+            child: Row(
+              children: [
+                Image.asset(
+                  "assets/images/logo.png",
+                  width: 40,
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  "Todo.",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w900,
+                      fontSize: 20,
+                      fontFamily: "Nunito",
+                      color: Colors.black),
+                )
+              ],
+            )),
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 32.0),
-            child: IconButton(
-                color: Colors.black, icon: Icon(Icons.menu), onPressed: () {}),
-          ),
+              padding: const EdgeInsets.only(right: 32.0),
+              child: MaterialButton(
+                onPressed: () {},
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20)
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        CircleAvatar(
+                            backgroundColor: Color.fromARGB(56, 54, 30, 196),
+                            foregroundColor: Colors.white,
+                            radius: 15,
+                            child: Icon(
+                              Icons.person,
+                            )),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text("Shady",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18,
+                                color: Colors.black,
+                                fontFamily: "Nunito"))
+                      ],
+                    ),
+                  ),
+                ),
+              ))
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(25.0),
+        padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -71,15 +115,22 @@ class _HomePageScreenState extends State<HomePageScreen> {
                     fontSize: 18,
                     color: Colors.black26,
                     fontFamily: "Nunito")),
-            const SizedBox(
-              height: 20,
-            ),
+            SizedBox(height: 20,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                MainButton(FontSize: 14 , text: "Work",),
-                MainButton(FontSize: 14 ,text: "Appointment",),
-                MainButton(FontSize: 14,text: "Assignment",),
+                MainButton(
+                  FontSize: 14,
+                  text: "Work",
+                ),
+                MainButton(
+                  FontSize: 14,
+                  text: "Appointment",
+                ),
+                MainButton(
+                  FontSize: 14,
+                  text: "Assignment",
+                ),
               ],
             ),
             const SizedBox(
@@ -186,55 +237,91 @@ class _HomePageScreenState extends State<HomePageScreen> {
                   color: Color.fromARGB(176, 63, 61, 181),
                   child: Row(
                     children: [
-                      Icon(Icons.add,color: Colors.white,),
-                      Text("Add event",style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: "Nunito",
-                          color: Colors.white))
+                      Icon(
+                        Icons.add,
+                        color: Colors.white,
+                      ),
+                      Text("Add event",
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontFamily: "Nunito",
+                              color: Colors.white))
                     ],
                   ),
-                  onPressed: (){
-
+                  onPressed: () {
                     showModalBottomSheet(
                         shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.vertical(top: Radius.circular(25.0))),
+                            borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(25.0))),
                         isScrollControlled: true,
-                          context: context,
-                      builder: (context){
+                        context: context,
+                        builder: (context) {
                           return Padding(
-                            padding:  EdgeInsets.only(top:12.0,left: 12.0,right: 12.0,bottom: MediaQuery.of(context).viewInsets.bottom ),
+                            padding: EdgeInsets.only(
+                                top: 12.0,
+                                left: 12.0,
+                                right: 12.0,
+                                bottom:
+                                    MediaQuery.of(context).viewInsets.bottom),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.all(25.0),
-                                  child: Text("Add new note",
+                                  child: Text(
+                                    "Add new note",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 22,
                                         color: Colors.black,
-                                        fontFamily: "Nunito"),),
-                                ),
-                                TextInput(controller: noteTitle, prefix: Icon(Icons.drive_file_rename_outline), label: 'Note title', isPassword: false,),
-                                SizedBox(height: 15,),
-                                TextInput(controller: noteBody, prefix: Icon(Icons.note_alt_outlined), label: 'Content', isPassword: false,),
-                                SizedBox(height: 15,),
-                                TextInput(controller: noteCreatedDate, prefix: Icon(Icons.date_range_rounded), label: 'Date', isPassword: false,),
-                                SizedBox(height: 15,),
-                                Align(
-                                  alignment:Alignment.center,
-                                  child: SizedBox(
-                                    width:240,
-                                    child: MainButton(text: "Add", FontSize: 16,),
+                                        fontFamily: "Nunito"),
                                   ),
                                 ),
-                                SizedBox(height: 15,),
+                                TextInput(
+                                  controller: noteTitle,
+                                  prefix: Icon(Icons.drive_file_rename_outline),
+                                  label: 'Note title',
+                                  isPassword: false,
+                                ),
+                                SizedBox(
+                                  height: 15,
+                                ),
+                                TextInput(
+                                  controller: noteBody,
+                                  prefix: Icon(Icons.note_alt_outlined),
+                                  label: 'Content',
+                                  isPassword: false,
+                                ),
+                                SizedBox(
+                                  height: 15,
+                                ),
+                                TextInput(
+                                  controller: noteCreatedDate,
+                                  prefix: Icon(Icons.date_range_rounded),
+                                  label: 'Date',
+                                  isPassword: false,
+                                ),
+                                SizedBox(
+                                  height: 15,
+                                ),
+                                Align(
+                                  alignment: Alignment.center,
+                                  child: SizedBox(
+                                    width: 240,
+                                    child: MainButton(
+                                      text: "Add",
+                                      FontSize: 16,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 15,
+                                ),
                               ],
                             ),
                           );
-                      }
-                      );
+                        });
                   },
                 )
               ],
