@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:todo/view/reusable-widgets/Checkbox.dart';
 import 'package:todo/view/reusable-widgets/MainButton.dart';
 import 'package:todo/view/reusable-widgets/TextInput.dart';
-
+// text controllers
+TextEditingController userName = TextEditingController();
+TextEditingController password = TextEditingController();
 class LogInScreen extends StatelessWidget {
   const LogInScreen({Key? key}) : super(key: key);
 
@@ -33,12 +35,14 @@ class LogInScreen extends StatelessWidget {
               height: 260,
               child: Column(
                 children: [
-                  const  TextInput(),
+                  TextInput(controller: userName, prefix: Icon(Icons.person), label: 'User name:', isPassword: false,),
+
 
                   const  SizedBox(
                     height: 50,
                   ),
-                  TextInput(),
+                  TextInput(controller: password, prefix: Icon(Icons.password_rounded), label: 'Password', isPassword: false,),
+
 
 
                   Row(

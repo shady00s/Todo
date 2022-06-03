@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:todo/view/reusable-widgets/MainButton.dart';
+import 'package:todo/view/reusable-widgets/TextInput.dart';
 
 class HomePageScreen extends StatefulWidget {
   const HomePageScreen({Key? key}) : super(key: key);
@@ -9,6 +10,10 @@ class HomePageScreen extends StatefulWidget {
   @override
   State<HomePageScreen> createState() => _HomePageScreenState();
 }
+// text controllers
+TextEditingController noteTitle = TextEditingController();
+TextEditingController noteBody = TextEditingController();
+TextEditingController noteCreatedDate = TextEditingController();
 
 class _HomePageScreenState extends State<HomePageScreen> {
   @override
@@ -19,8 +24,11 @@ class _HomePageScreenState extends State<HomePageScreen> {
         elevation: 0,
         leading: Padding(
           padding: const EdgeInsets.only(left: 32.0),
-          child: IconButton(
-              color: Colors.black, icon: Icon(Icons.menu), onPressed: () {}),
+          child: Row(
+            children: [
+
+            ],
+          )
         ),
         actions: [
           Padding(
@@ -162,13 +170,74 @@ class _HomePageScreenState extends State<HomePageScreen> {
             SizedBox(
               height: 10,
             ),
-            Text(
-              "All events",
-              style: TextStyle(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 22,
-                  color: Colors.black,
-                  fontFamily: "Nunito"),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "All events",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 22,
+                      color: Colors.black,
+                      fontFamily: "Nunito"),
+                ),
+                MaterialButton(
+                  elevation: 0,
+                  color: Color.fromARGB(176, 63, 61, 181),
+                  child: Row(
+                    children: [
+                      Icon(Icons.add,color: Colors.white,),
+                      Text("Add event",style: TextStyle(
+                          fontSize: 18,
+                          fontFamily: "Nunito",
+                          color: Colors.white))
+                    ],
+                  ),
+                  onPressed: (){
+
+                    showModalBottomSheet(
+                        shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.vertical(top: Radius.circular(25.0))),
+                        isScrollControlled: true,
+                          context: context,
+                      builder: (context){
+                          return Padding(
+                            padding:  EdgeInsets.only(top:12.0,left: 12.0,right: 12.0,bottom: MediaQuery.of(context).viewInsets.bottom ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(25.0),
+                                  child: Text("Add new note",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 22,
+                                        color: Colors.black,
+                                        fontFamily: "Nunito"),),
+                                ),
+                                TextInput(controller: noteTitle, prefix: Icon(Icons.drive_file_rename_outline), label: 'Note title', isPassword: false,),
+                                SizedBox(height: 15,),
+                                TextInput(controller: noteBody, prefix: Icon(Icons.note_alt_outlined), label: 'Content', isPassword: false,),
+                                SizedBox(height: 15,),
+                                TextInput(controller: noteCreatedDate, prefix: Icon(Icons.date_range_rounded), label: 'Date', isPassword: false,),
+                                SizedBox(height: 15,),
+                                Align(
+                                  alignment:Alignment.center,
+                                  child: SizedBox(
+                                    width:240,
+                                    child: MainButton(text: "Add", FontSize: 16,),
+                                  ),
+                                ),
+                                SizedBox(height: 15,),
+                              ],
+                            ),
+                          );
+                      }
+                      );
+                  },
+                )
+              ],
             ),
             Expanded(
               child: ListView.builder(itemBuilder: (context, index) {
