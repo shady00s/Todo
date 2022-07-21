@@ -122,14 +122,17 @@ class _HomePageScreenState extends State<HomePageScreen> {
                 MainButton(
                   FontSize: 14,
                   text: "Work",
+                    onPressed:(){print('working');}
                 ),
                 MainButton(
                   FontSize: 14,
                   text: "Appointment",
+                    onPressed:(){print('working');}
                 ),
                 MainButton(
                   FontSize: 14,
                   text: "Assignment",
+                    onPressed:(){print('working');}
                 ),
               ],
             ),
@@ -285,6 +288,12 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                   prefix: Icon(Icons.drive_file_rename_outline),
                                   label: 'Note title',
                                   isPassword: false,
+                                    validator:(value){
+                                      if (value == null || value.isEmpty) {
+                                        return 'Please enter username';
+                                      }
+                                      return null;
+                                    }
                                 ),
                                 SizedBox(
                                   height: 15,
@@ -294,6 +303,12 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                   prefix: Icon(Icons.note_alt_outlined),
                                   label: 'Content',
                                   isPassword: false,
+                                    validator:(value){
+                                      if (value == null || value.isEmpty) {
+                                        return 'Please enter username';
+                                      }
+                                      return null;
+                                    }
                                 ),
                                 SizedBox(
                                   height: 15,
@@ -303,6 +318,12 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                   prefix: Icon(Icons.date_range_rounded),
                                   label: 'Date',
                                   isPassword: false,
+                                    validator:(value){
+                                      if (value == null || value.isEmpty) {
+                                        return 'Please enter username';
+                                      }
+                                      return null;
+                                    }
                                 ),
                                 SizedBox(
                                   height: 15,
@@ -314,6 +335,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                     child: MainButton(
                                       text: "Add",
                                       FontSize: 16,
+                                        onPressed:(){print('working');}
                                     ),
                                   ),
                                 ),

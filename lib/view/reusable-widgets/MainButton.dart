@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 class MainButton extends StatelessWidget {
-  const MainButton({Key? key ,required this.FontSize ,required this.text}) : super(key: key);
+
+
+  const MainButton({Key? key ,required this.FontSize ,required this.text,required this.onPressed}) : super(key: key);
   final double FontSize;
   final String text;
+  final onPressed;
   @override
   Widget build(BuildContext context) {
     return  MaterialButton(
@@ -12,7 +15,7 @@ class MainButton extends StatelessWidget {
       ),
       color: Colors.indigo,
       textColor: Colors.white,
-      onPressed: (){},
+      onPressed: onPressed,
       child: Text(text,style: TextStyle(fontSize: FontSize),),
     );
   }
